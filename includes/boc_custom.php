@@ -160,11 +160,11 @@ class boc_Menu_Select_Fallback_Walker extends Walker_Page {
 function menuFallBack(){
 	
 	echo '<div id="menu"><ul>';
-	echo '<li><a href="'.home_url('/').'"><span class="home_icon"></span></a></li>';
 	wp_list_pages(
       array(
         'title_li'  => '',
       	'sort_column'=> 'menu_order',
+        'exclude' => '489'
       )
     );
     echo '</ul></div>';

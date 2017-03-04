@@ -278,7 +278,7 @@
 					'menu_class' 	=> '', 
 					'walker' 		=> new boc_Menu_Walker,
 					'fallback_cb'   => 'menuFallBack',
-					'items_wrap' => '<ul><li><a href="'.home_url('/').'"><span class="home_icon"></span></a></li>%3$s</ul>',
+					'post__not_in' => array('489')
 			));?>
 			
 			<?php wp_nav_menu( array(
@@ -287,7 +287,7 @@
 					'menu_class' 	=> '', 
 					'walker' 		=> new boc_Menu_Select_Walker,
 					'fallback_cb'   => 'menuSelectFallBack',
-					'items_wrap' => '<select id="select_menu" onchange="location = this.value"><option value="">'.__('Select Page', 'Aqua').'</option>%3$s</select>',
+					'post__not_in' => array('489')
 			));?>							
 						
 			</div>

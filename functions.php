@@ -178,21 +178,21 @@ function boc_custom_types() {
 		)
 	);
 
-	register_post_type(
-		'services',
-		array(
-			'labels' => array(
-				'name' => 'Services',
-				'singular_name' => 'Services'
-			),
-			'public' => true,
-			'has_archive' => true,
-			'rewrite' => array('slug' => 'services_item'),
-			'supports' => array('title', 'editor', 'thumbnail','page-attributes'),
-			'can_export' => true,
-			'show_in_nav_menus' => true,
-		)
-	);
+	// register_post_type(
+	// 	'articles',
+	// 	array(
+	// 		'labels' => array(
+	// 			'name' => 'Articles',
+	// 			'singular_name' => 'Articles'
+	// 		),
+	// 		'public' => true,
+	// 		'has_archive' => true,
+	// 		'rewrite' => array('slug' => 'services_item'),
+	// 		'supports' => array('title', 'editor', 'thumbnail','page-attributes'),
+	// 		'can_export' => true,
+	// 		'show_in_nav_menus' => true,
+	// 	)
+	// );
 
 	register_taxonomy('portfolio_category', 'portfolio', array('hierarchical' => true, 'label' => 'Portfolio Categories', 'query_var' => true, 'rewrite' => true));
 }
@@ -246,3 +246,15 @@ function my_option_posts_per_page( $value ) {
         return $option_posts_per_page;
     }
 }
+
+function unregister_post_type() {
+    global $wp_post_types;
+    if ( isset( $wp_post_types[ 'services' ] ) ) {
+    	print('ffffff');
+        unset( $wp_post_types[ 'services' ] );
+        return true;
+    }
+    return false;
+}
+
+add_action('init', 'unregister_post_type', 99999);
